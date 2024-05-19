@@ -103,7 +103,7 @@ body {
   height: 90%;
   overflow: hidden; 
 
-  background-image: url('./../images/kids-wallpaper.jpg');
+  background-image: url('./../images/jungle.jpeg');
   background-size: cover; 
   background-repeat: no-repeat;
 }
@@ -180,7 +180,7 @@ body {
 
 #memory--settings-modal {
  /* background-color: rgba(0, 0, 0, .86);  */
-  background-image: url('./../images/kids-wallpaper.jpg');
+  background-image: url('./../images/jungle.jpeg');
   background-size: cover; /* Adjust background image size as needed */
   background-repeat: no-repeat;
   
@@ -394,95 +394,95 @@ body {
 }
 
 .back.card-1 {
-  background-image: url(../images/fruits/apple.gif);
+  background-image: url(../images/fruits/apple.jpg);
 }
 .back.card-2 {
-  background-image: url(../images/fruits/fig.gif);
+  background-image: url(../images/fruits/fig.jpg);
 }
 .back.card-3 {
-  background-image: url(../images/fruits/grape.gif);
+  background-image: url(../images/fruits/grape.jpg);
 }
 .back.card-4 {
-  background-image: url(../images/fruits/kiwi.gif);
+  background-image: url(../images/fruits/kiwi.jpg);
 }
 .back.card-5 {
-  background-image: url(../images/fruits/lemon.gif);
+  background-image: url(../images/fruits/lemon.jpg);
 }
 .back.card-6 {
-  background-image: url(../images/fruits/lime.gif);
+  background-image: url(../images/fruits/lime.jpg);
 }
 .back.card-7 {
-  background-image: url(../images/fruits/mango.gif);
+  background-image: url(../images/fruits/mango.jpg);
 }
 .back.card-8 {
-  background-image: url(../images/fruits/melon.gif);
+  background-image: url(../images/fruits/melon.jpg);
 }
 .back.card-9 {
-  background-image: url(../images/fruits/orange.gif);
+  background-image: url(../images/fruits/orange.jpg);
 }
 .back.card-10 {
-  background-image: url(../images/fruits/peach.gif);
+  background-image: url(../images/fruits/peach.jpg);
 }
 .back.card-11 {
-  background-image: url(../images/fruits/pear.gif);
+  background-image: url(../images/fruits/pear.jpg);
 }
 .back.card-12 {
-  background-image: url(../images/fruits/pinapple.gif);
+  background-image: url(../images/fruits/pinapple.jpg);
 }
 .back.card-13 {
-  background-image: url(../images/fruits/plum.gif);
+  background-image: url(../images/fruits/plum.jpg);
 }
 .back.card-14 {
-  background-image: url(../images/fruits/raspberry.gif);
+  background-image: url(../images/fruits/raspberry.jpg);
 }
 .back.card-15 {
-  background-image: url(../images/fruits/strawberry.gif);
+  background-image: url(../images/fruits/strawberry.jpg);
 }
 
 .back.card-16 {
-  background-image: url(../images/animal/Bear.gif);
+  background-image: url(../images/animal/Bear.png);
 }
 .back.card-17 {
-  background-image: url(../images/animal/Cat.gif);
+  background-image: url(../images/animal/Cat.png);
 }
 .back.card-18 {
-  background-image: url(../images/animal/Cow.gif);
+  background-image: url(../images/animal/Cow.png);
 }
 .back.card-19 {
-  background-image: url(../images/animal/Dog.gif);
+  background-image: url(../images/animal/Dog.png);
 }
 .back.card-20 {
-  background-image: url(../images/animal/Elephant.gif);
+  background-image: url(../images/animal/Elephant.png);
 }
 .back.card-21 {
-  background-image: url(../images/animal/Horse.gif);
+  background-image: url(../images/animal/Horse.png);
 }
 .back.card-22 {
-  background-image: url(../images/animal/Pig.gif);
+  background-image: url(../images/animal/Pig.png);
 }
 .back.card-23 {
-  background-image: url(../images/animal/Rabbit.gif);
+  background-image: url(../images/animal/Rabbit.png);
 }
 .back.card-24 {
-  background-image: url(../images/animal/Zebra.gif);
+  background-image: url(../images/animal/Zebra.png);
 }
 .back.card-25 {
-  background-image: url(../images/donut/donut1.gif);
+  background-image: url(../images/donut/donut1.jpg);
 }
 .back.card-26 {
-  background-image: url(../images/donut/donut2.gif);
+  background-image: url(../images/donut/donut2.jpg);
 }
 .back.card-27 {
-  background-image: url(../images/donut/donut3.gif);
+  background-image: url(../images/donut/donut3.jpg);
 }
 .back.card-28 {
-  background-image: url(../images/donut/donut4.gif);
+  background-image: url(../images/donut/donut4.jpg);
 }
 .back.card-29 {
-  background-image: url(../images/donut/donut5.gif);
+  background-image: url(../images/donut/donut5.jpg);
 }
 .back.card-30 {
-  background-image: url(../images/donut/donut6.gif);
+  background-image: url(../images/donut/donut6.jpg);
 }
 
 .modal-splash {

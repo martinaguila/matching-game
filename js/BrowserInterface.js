@@ -2,20 +2,7 @@
 class AudioController {
   constructor() {
     // Local only
-    // this.bgMusic = new Audio('Assets/Audio/bg-music.mp3');
-    // this.flipSound = new Audio('Assets/Audio/flip.wav');
-    // this.matchSound = new Audio('Assets/Audio/match.wav');
-    // this.victorySound = new Audio('Assets/Audio/victory.wav');
-    // this.gameOverSound = new Audio('Assets/Audio/gameOver.wav');
-
-    // From GITHUB PAGES WEBSITE
-    // this.bgMusic = new Audio('https://github.com/swift19/Memory-Matching-Game/blob/main/assets/Audio/bg-music.wav');
-    // this.flipSound = new Audio('https://github.com/swift19/Memory-Matching-Game/blob/main/assets/Audio/flip.wav');
-    // this.matchSound = new Audio('https://github.com/swift19/Memory-Matching-Game/blob/main/assets/Audio/match.wav');
-    // this.victorySound = new Audio('https://github.com/swift19/Memory-Matching-Game/blob/main/assets/Audio/victory.wav');
-    // this.gameOverSound = new Audio('https://github.com/swift19/Memory-Matching-Game/blob/main/assets/Audio/gameOver.wav');
-
-    this.bgMusic = new Audio('assets/Audio/bg-music.wav');
+    this.bgMusic = new Audio('Assets/Audio/bg-music.mp3');
     this.bgMusic2 = new Audio('assets/Audio/happy-upbeat.wav'); 
     this.bgMusic3 = new Audio('assets/Audio/kids-tune.wav');
     this.flipSound = new Audio('assets/Audio/flip.wav');
@@ -29,18 +16,20 @@ class AudioController {
     this.bgMusic2.loop = true;
     this.bgMusic3.volume = 0.5;
     this.bgMusic3.loop = true;
-    this.isMuted = false; // Add a property to track mute state
+
+    // this.bgMusic.play();
+    console.log("test")
+    // this.startBgMusic();
   }
+
+  // startBgMusic() {
+  //   this.bgMusic.play().catch(error => {
+  //     console.error('Error playing bgMusic:', error);
+  //   });
+  // }
+  
   startMusic(sound) {
-    var sound = sound + 1;
-    console.log("Soundtrack change by level here" , sound)
-    if(sound === 2) {
-      this.bgMusic2.play();
-    } else if(sound === 3) {
-      this.bgMusic3.play();
-    } else {
-      this.bgMusic.play();
-    }
+    this.bgMusic.play();
   }
   stopMusic() {
     var lvl = +document.getElementById("lvl").textContent;
@@ -69,55 +58,25 @@ class AudioController {
     this.stopMusic();
     this.gameOverSound.play();
   }
-
-  mute() {
-    this.isMuted = true;
-    this.flipSound.muted = true;
-    this.matchSound.muted = true;
-    this.victorySound.muted = true;
-    this.gameOverSound.muted = true;
-    var lvl = +document.getElementById("lvl").textContent;
-    if(lvl === 2) {
-      this.bgMusic2.muted = true;
-    } else if(lvl === 3) {
-      this.bgMusic3.muted = true;
-    } else {
-      this.bgMusic.muted = true;
-    }
-  }
-
-  unmute() {
-    this.isMuted = false;
-    this.flipSound.muted = false;
-    this.matchSound.muted = false;
-    this.victorySound.muted = false;
-    this.gameOverSound.muted = false;
-    var lvl = +document.getElementById("lvl").textContent;
-    if(lvl === 2) {
-      this.bgMusic2.muted = false;
-    } else if(lvl === 3) {
-      this.bgMusic3.muted = false;
-    } else {
-      this.bgMusic.muted = false;
-    }
-  }
 }
 
 (function($) {
-  document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById("myModal");
-    const modalVideo = document.getElementById("modal-video");
-    const mainContent = document.getElementById("main-content");
+  console.log("here")
+  // this.bgMusic.play();
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   const modal = document.getElementById("myModal");
+  //   const modalVideo = document.getElementById("modal-video");
+  //   const mainContent = document.getElementById("main-content");
 
-    modal.style.display = "block";
-    modalVideo.play();
+  //   // modal.style.display = "block";
+  //   // modalVideo.play();
 
-    setTimeout(function () {
-      modal.style.display = "none";
-      mainContent.style.display = "block";
-      modalVideo.pause();
-    }, 5000); // 5000 milliseconds (5 seconds)
-  });
+  //   setTimeout(function () {
+  //     modal.style.display = "none";
+  //     mainContent.style.display = "block";
+  //     modalVideo.pause();
+  //   }, 5000); // 5000 milliseconds (5 seconds)
+  // });
 
   var audioController = new AudioController();
 
@@ -133,13 +92,7 @@ class AudioController {
   /************ End hard coded settings ******************/
 
   // Handle clicking on settings icon
-  var settings = document.getElementById('memory--settings-icon');
   var modal = document.getElementById('memory--settings-modal');
-  var handleOpenSettings = function (event) {
-    event.preventDefault();
-    modal.classList.toggle('show');
-  };
-  settings.addEventListener('click', handleOpenSettings);
 
   // Handle settings form submission
   var reset = document.getElementById('memory--settings-reset');
@@ -182,7 +135,6 @@ class AudioController {
     tutorial.style.display = "block";
     tutorialVideo.play();
   };
-  tutorialBtn.addEventListener('click', handleTutorialSubmission);
 
   // Get a reference to the close icon element
   var closeIcon = document.getElementById('close-icon');
@@ -195,8 +147,6 @@ class AudioController {
     tutorialVideo.currentTime = 0;
     tutorial.style.display = "none";
   }
-  // Attach the click event listener to the close icon
-  closeIcon.addEventListener('click', handleIconClick);
 
   // Function to flip all cards and freeze them for 20 seconds
   function flipAllCardsAndFreeze(cards , level) {
@@ -531,68 +481,6 @@ class AudioController {
 
     return flipContainer;
   };
-
-  // Add a variable to keep track of the currently active camera
-  let activeCamera = 'user';
-
-  // Function to toggle between user and environment cameras
-  function toggleCamera() {
-    const video = document.getElementById('webcam');
-    const constraints =
-      activeCamera === 'user'
-        ? { video: { facingMode: 'environment' } }
-        : { video: { facingMode: 'user' } };
-
-    // Stop the current stream
-    const currentStream = video.srcObject;
-    if (currentStream) {
-      const tracks = currentStream.getTracks();
-      tracks.forEach((track) => track.stop());
-    }
-
-    // Get a new stream with the updated constraints
-    navigator.mediaDevices
-      .getUserMedia(constraints)
-      .then((stream) => {
-        video.srcObject = stream;
-        activeCamera = activeCamera === 'user' ? 'environment' : 'user';
-      })
-      .catch((error) => {
-        console.error('Error accessing camera:', error);
-      });
-  }
-
-  // Add a click event listener to the button
-  document.getElementById('toggle-camera').addEventListener('click', toggleCamera);
-
-
-  var muteButton = document.getElementById('mute-audio');
-  muteButton.addEventListener('click', function() {
-    // audioController.stopMusic(); // for mobile only
-    audioController.mute(); // Mute audio
-    muteButton.style.display = 'none'; // Hide the mute button
-    unmuteButton.style.display = 'inline-block'; // Show the unmute button
-  });
-
-  // Add event listener to the unmute button
-  var unmuteButton = document.getElementById('unmute-audio');
-  unmuteButton.addEventListener('click', function() {
-    // audioController.startMusic(); // for mobile only
-    audioController.unmute(); // Unmute audio
-    muteButton.style.display = 'inline-block'; // Show the mute button
-    unmuteButton.style.display = 'none'; // Hide the unmute button
-  });
-
-  async function startWebcam() {
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-
-        webcam.srcObject = stream;
-    } catch (error) {
-        console.error('Error accessing webcam:', error);
-    }
-  }
-  startWebcam();
 
   const TWO_PI = Math.PI * 2;
   const HALF_PI = Math.PI * 0.5;
