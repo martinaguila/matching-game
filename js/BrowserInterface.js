@@ -61,22 +61,15 @@ class AudioController {
 }
 
 (function($) {
-  console.log("here")
-  // this.bgMusic.play();
-  // document.addEventListener("DOMContentLoaded", function () {
-  //   const modal = document.getElementById("myModal");
-  //   const modalVideo = document.getElementById("modal-video");
-  //   const mainContent = document.getElementById("main-content");
+  // Define the function before adding the event listener
+  var homeFunction = function (event) {
+    event.preventDefault();
+    location.reload(); // This will reload the current page
+  };
 
-  //   // modal.style.display = "block";
-  //   // modalVideo.play();
-
-  //   setTimeout(function () {
-  //     modal.style.display = "none";
-  //     mainContent.style.display = "block";
-  //     modalVideo.pause();
-  //   }, 5000); // 5000 milliseconds (5 seconds)
-  // });
+  // Get the element and add the event listener
+  var home = document.getElementById('memory--settings-icon');
+  home.addEventListener('click', homeFunction);
 
   var audioController = new AudioController();
 
@@ -99,7 +92,6 @@ class AudioController {
   var defaultDificulty = "2x3";
   var handleSettingsSubmission = function (event) {
     event.preventDefault();
-
     countdownTimer = startCountdown(0, true);
 
     // var selectWidget = document.getElementById("memory--settings-grid").valueOf();
@@ -205,15 +197,33 @@ class AudioController {
           if (timer <= 0) {
             clearInterval(countdownInterval);
             // Check if the game is over
+            // else {
+              // Show the "Try Again" button
+              var tryAgainButton = document.getElementById('try-again-button');
+              tryAgainButton.style.display = 'block';
+        
+              mistakes -= 1;
+              console.log(mistakes)
+              if (mistakes === 2) {
+                heart3.style.display = 'none';
+              } else if (mistakes === 1) {
+                heart2.style.display = 'none';
+              }
+              else {
+                heart1.style.display = 'none';
+                var gameResetButton = document.getElementById('game-reset-button');
+                gameResetButton.style.display = 'block';
+                tryAgainButton.style.display = 'none';
+        
+                message = "Game over.";
+                audioController.gameOver();
+              }
+            // }
             if (!$.isGameOver) {
               $.isGameOver = true;
               var message = getEndGameMessage(); // Call a function to handle the game over state
               document.getElementById('memory--end-game-message').textContent = message;
               document.getElementById("memory--end-game-modal").classList.toggle('show');
-
-              // Show the "Try Again" button
-              var tryAgainButton = document.getElementById('try-again-button');
-              tryAgainButton.style.display = 'block';
             }
           }
 
@@ -246,24 +256,14 @@ class AudioController {
     // var originalImageSrc = monkeyImage.src;
 
     if (status.code == 2 ) {
-      // fall banana
-      // const confs = document.getElementById("banana_canvas");
-      // confs.style.display = 'block';
-      // setTimeout(function() {
-      //   confs.style.display = 'none';
-      // }, 2000);
-
+      console.log(123)
       audioController.match(); // Play match sound
-      // monkeyImage.src = './assets/monkey/monkey-doing-a-flip.gif';
-      // setTimeout(function() {
-      //   monkeyImage.src = originalImageSrc; // Change the image back to the original source
-      // }, 2000);
 
       // Array of image file names in the "images/success-images" folder
       const imageArray = [
         'amazing.png',
         'awesome.png',
-        'good_jop.png',
+        'good_job.png',
         'great.png',
         'keep_going.png',
         'nice_one.png',
@@ -344,7 +344,22 @@ class AudioController {
   
     // Hide the "Try Again" button
     tryAgainButton.style.display = 'none';
+
+    // var heart1 = document.getElementById('heart1');
+    // var heart2 = document.getElementById('heart2');
+    // var heart3 = document.getElementById('heart3');
+
+    // heart1.style.display = 'block';
+    // heart2.style.display = 'block';
+    // heart3.style.display = 'block';
+    // console.log("check")
   });
+
+  var gameReset = document.getElementById('game-reset-button');
+  gameReset.addEventListener('click', function () {
+    location.reload(); // This will reload the current page
+  });
+
 
   let level = 1;
   var gameLevel = ["3x4", "4x5", "5x6", "6x7"];
@@ -374,8 +389,14 @@ class AudioController {
     }
   }
 
+  var mistakes = 3;
   var getEndGameMessage = function(score) {
     var message = "";
+
+    // Select the heart elements
+    var heart1 = document.getElementById('heart1');
+    var heart2 = document.getElementById('heart2');
+    var heart3 = document.getElementById('heart3');
 
     if (score == 100) {
       message = "Amazing job!"
@@ -388,10 +409,6 @@ class AudioController {
     else if (score >= 50) {
       message = "Great job!"
       audioController.victory();
-    }
-    else {
-      message = "You can do better. Please restart the game.";
-      audioController.gameOver();
     }
 
     return message;
@@ -602,7 +619,6 @@ class AudioController {
       update:function() {
           this.time = Math.min(this.duration, this.time + timeStep);
           this.progress = Ease.inBack(this.time, 0, 1, this.duration);
-          console.log(this.time, this.duration)
           this.complete = this.time === this.duration;
 
       },

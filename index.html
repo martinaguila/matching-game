@@ -33,6 +33,7 @@
           <h3 id="memory--end-game-score"></h3>
           <div class="container">
             <button id="try-again-button" class="try-again">Try Again</button>
+            <button id="game-reset-button" class="try-again">Back to Home</button>
           </div>
         </div>
       </div>
@@ -40,20 +41,23 @@
     <section class="memory--menu-bar">
       <div class="inner">
         <div class="left"><h1 class="memory--app-name">Memory Matching Game</h1></div>
-        <!-- <div class="right">
+        <div class="right">
           <a href="#settings">
-            <button id="toggle-camera">🔄</button>
+            <!-- <button id="toggle-camera">🔄</button> -->
             <img id="memory--settings-icon" src="images/home-icon.png" />
           </a>
-        </div> -->
+        </div>
       </div>
     </section>
     <section id="memory--app-container">
       <div id="video-container">
         <video id="webcam" autoplay playsinline></video>
       </div>
-      <div id="timer">Time Left: <span id="countdown"></span></div>
+      <div id="timer">Time: <span id="countdown"></span></div>
       <div id="level">Level: <span id="lvl"></span></div>
+      <div id="heart1"><p>&hearts;<p></div>
+      <div id="heart2"><p>&hearts;<p></div>
+      <div id="heart3"><p>&hearts;<p></div>
       <ul id="memory--cards">
       </ul>
       </div>
