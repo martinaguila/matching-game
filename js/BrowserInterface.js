@@ -179,7 +179,7 @@ class AudioController {
   }
 
   var countdownTimer;
-  var countdownDuration = 10; // Set the countdown duration in seconds
+  var countdownDuration = 20; // Set the countdown duration in seconds
   var countdownInterval;
 
   function startCountdown(duration, isButtonClicked) {
@@ -364,7 +364,7 @@ class AudioController {
   let level = 1;
   var gameLevel = ["3x4", "4x5", "5x6", "6x7"];
   var nextLevel = function () {
-    countdownDuration += 10;
+    countdownDuration += 20;
     level ++;
     console.log(level)
     console.log(countdownDuration)
